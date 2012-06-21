@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Cordova!</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+		$(document).ready(function() {
+			$.mobile.changePage.defaults.transition = 'slide';
+			//alert('Device is ready to go!');
+		});
+</script>
+
+
+
+
+<!-- #################### -->
+<!-- #    INDEX PAGE    # -->
+<!-- #################### -->
+
+<div data-role="page" id="first" >
+	<div data-role="header">
+		<h1>Cordova!</h1>
+	</div>
+
+	<div data-role="fieldcontain">
+		<label for="email">E-Mail:</label>
+		<input type="email" id="email" value="" />
+	</div>
+
+	<div data-role="fieldcontain">
+		<label for="password">Password:</label>
+		<input type="password" id="password" value="" />
+	</div>
+
+	<input type="button" id="go" value="Go!" data-icon="check" />
+
+	<script type="text/javascript">	
+		$('#go').click(function () {
+			$.mobile.changePage('#home', { transition: 'pop' });
+		});
+	</script>
+</div>
+
+
+
+
+<!-- ################### -->
+<!-- #    HOME PAGE    # -->
+<!-- ################### -->
+
+<div data-role="page" id="home" data-add-back-btn="true" >
+	<div data-role="header">
+		<h1>Cordova!</h1>
+	</div>
+
+	<ul data-role="listview" >
+		<li data-role="list-divider">Select a demo:</li> 
+		<li><a href="#camera">   Camera   </a></li>
+		<li><a href="#contacts"> Contacts </a></li>
+		<li><a href="#plugins">  Plugins  </a></li>
+	</ul>
+	<script>
+		
+	</script>
+</div>
+
+
+
+
+<!-- ##################### -->
+<!-- #    CAMERA PAGE    # -->
+<!-- ##################### -->
+
+<div data-role="page" id="camera" data-add-back-btn="true" >
+	<div data-role="header">
+		<h1>Camera!</h1>
+	</div>
+	<script>
+		
+	</script>
+</div>
+
+
+
+
+<!-- ####################### -->
+<!-- #    CONTACTS PAGE    # -->
+<!-- ####################### -->
+
+<div data-role="page" id="contacts" data-add-back-btn="true" >
+	<div data-role="header">
+		<h1>Contacts!</h1>
+	</div>
+	<script>
+		
+	</script>
+</div>
+
+
+
+
+<!-- ##################### -->
+<!-- #    PLUGIN PAGE    # -->
+<!-- ##################### -->
+
+<div data-role="page" id="plugins" data-add-back-btn="true" >
+	<div data-role="header">
+		<h1>Plugins!</h1>
+	</div>
+	<script>
+		
+	</script>
+</div>
+
+</body>
+</html>
