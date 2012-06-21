@@ -11,6 +11,8 @@
 	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
 
+	<script src="cordova.js"></script>
+
 </head>
 <body>
 
@@ -86,8 +88,31 @@
 	<div data-role="header">
 		<h1>Camera!</h1>
 	</div>
+	
+	<div id="imgholder" data-role="content" >
+	</div>
+
 	<script>
-		
+		$('#camera').bind('pageshow', function() {
+			navigator.device.capture.captureImage(
+				// success
+				function(mediaFile) {
+					$('#imgholder').empty();
+
+					img = $(document.createElement('img')).attr({ src: mediaFile[0].fullPath });
+					$('#imgholder').append(img);
+				},
+
+				// failure
+				function(error) {
+					alert('Error code: ' + error.code, null, 'Capture Error');
+				},
+				
+				// options
+				{
+					limit: '1'
+				});
+			});
 	</script>
 </div>
 
