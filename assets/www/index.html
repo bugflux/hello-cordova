@@ -127,8 +127,37 @@
 	<div data-role="header">
 		<h1>Contacts!</h1>
 	</div>
+
+	<ul id="contactsholder" data-role="listview" data-filter="true" data-inset="true" >
+	</ul>
+
 	<script>
-		
+		$('#contacts').bind('pageshow', function() {
+			navigator.contacts.find(
+				// contact fields
+				[ 'displayName', 'phoneNumbers' ],
+
+				// success
+				function(contacts) {
+					$('#contactsholder').empty();
+					for (var r = 0; r < contacts.length; r++) {
+						if (contacts[r].phoneNumbers[0] && contacts[r].displayName) {
+							$('#contactsholder').append('<li><a href="tel:' + contacts[r].phoneNumbers[0].value + '">' + contacts[r].displayName + '</a></li>');
+						}
+					}
+					$('#contactsholder').listview('refresh');
+				},
+				
+				// failure
+				function(error) {
+					alert('Error code: ' + error.code, null, 'Contact fetching error');
+				},
+				
+				// options
+				{
+					multiple: 'true'
+				});
+			});
 	</script>
 </div>
 
