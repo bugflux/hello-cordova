@@ -12,6 +12,7 @@
 	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
 
 	<script src="cordova.js"></script>
+	<script src="brightness.js"></script>
 
 </head>
 <body>
@@ -172,8 +173,39 @@
 	<div data-role="header">
 		<h1>Plugins!</h1>
 	</div>
+	
+	<div id="#slider">
+		<label for="brightness">Set brightness:</label>
+		<input type="range" id="brightness" value="100" min="0" max="255" />
+		<input type="button" id="change" value="Change!" data-icon="check" />
+	</div>
+
 	<script>
-		
+		$('#plugins').bind('pageshow', function() {
+			window.plugins.brightness.get(
+				// success
+				function(brightness) {
+					$('#brightness').val(brightness.value);
+					$('#brightness').slider('refresh');
+				},
+
+				// failure
+				function(error) {
+					alert('Unable to get brightness');
+				});
+			});
+
+		$('#change').click(function() {
+			window.plugins.brightness.set(
+				// value
+				$('#brightness').val(),
+
+				// success
+				function() {},
+
+				// failure
+				function() {});
+			});
 	</script>
 </div>
 
